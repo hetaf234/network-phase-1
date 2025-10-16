@@ -6,17 +6,16 @@ package Network_Project;
 
 import java.time.LocalDate;
 
+
 /**
- * RESERVATION CLASS (Phase 1)
- * ---------------------------
- * Holds booking information for one reservation.
- * Author: Hetaf — simplified student version
+ *
+ * @author hetaf
  */
 public class Reservation {
 
    
-    private String username;       // person who booked
-    private String carId;          // car being rented
+    private String username;      
+    private String carId;          // rented car
     private LocalDate startDate;   // start date
     private int days;              // duration (1–7 days)
 
@@ -32,17 +31,25 @@ public class Reservation {
     // ===== Getters / Setters =====
  
 
-    public String getUsername() { return username; }
-    public void setUsername(String username) { this.username = username; }
+    public String getUsername()
+    { return username; }
+    public void setUsername(String username)
+    { this.username = username; }
 
-    public String getCarId() { return carId; }
-    public void setCarId(String carId) { this.carId = carId; }
+    public String getCarId() 
+    { return carId; }
+    public void setCarId(String carId)
+    { this.carId = carId; }
 
-    public LocalDate getStartDate() { return startDate; }
-    public void setStartDate(LocalDate startDate) { this.startDate = startDate; }
+    public LocalDate getStartDate() 
+    { return startDate; }
+    public void setStartDate(LocalDate startDate)
+    { this.startDate = startDate; }
 
-    public int getDays() { return days; }
-    public void setDays(int days) { this.days = days; }
+    public int getDays() 
+    { return days; }
+    public void setDays(int days)
+    { this.days = days; }
 
     // ===== Helper: end date (exclusive) =====
     public LocalDate getEndDateExclusive() {
@@ -50,5 +57,5 @@ public class Reservation {
     }
 
 
-}
+}//end of class 
 

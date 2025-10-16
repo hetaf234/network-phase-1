@@ -14,8 +14,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 /**
- * Client GUI (Phase 1)
- * Flow: Register -> Date -> Type/Search -> Reserve -> Confirm
+ *
+ * @author hetaf
  */
 public class ClientGUI extends JFrame {
 
@@ -39,7 +39,7 @@ public class ClientGUI extends JFrame {
     private String selectedStartISO = null;
     private int    selectedDays = 1;
 
-    private final JTextField     emailField = new JTextField(18);
+    private final JTextField     usernameField = new JTextField(18);
     private final JPasswordField passField  = new JPasswordField(18);
 
     private final JComboBox<String> startDateBox = new JComboBox<>();
@@ -104,7 +104,7 @@ public class ClientGUI extends JFrame {
         c.gridy = 1; p.add(startBtn, c);
 
         startBtn.addActionListener(e -> {
-            emailField.setText("");
+            usernameField.setText("");
             passField.setText("");
             cards.show(root, F_AUTH);
         });
@@ -121,8 +121,8 @@ public class ClientGUI extends JFrame {
         c.gridx = 0; c.gridy = 0; c.gridwidth = 2; p.add(title, c);
         c.gridwidth = 1;
 
-        c.gridy = 1; c.gridx = 0; p.add(new JLabel("Email:"), c);
-        c.gridx = 1; p.add(emailField, c);
+        c.gridy = 1; c.gridx = 0; p.add(new JLabel("Username :"), c);
+        c.gridx = 1; p.add(usernameField, c);
 
         c.gridy = 2; c.gridx = 0; p.add(new JLabel("Password:"), c);
         c.gridx = 1; p.add(passField, c);
@@ -135,10 +135,10 @@ public class ClientGUI extends JFrame {
     }
 
     private void handleRegister(ActionEvent e) {
-        String user = emailField.getText().trim();
+        String user = usernameField.getText().trim();
         String pass = new String(passField.getPassword());
         if (user.isEmpty() || pass.isEmpty()) {
-            alert("Please enter both email and password.");
+            alert("Please enter both username and password.");
             return;
         }
 

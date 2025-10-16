@@ -5,14 +5,8 @@
 package Network_Project;
 
 /**
- * CAR CLASS (Phase 1)
- * -------------------
- * Represents a single car in the rental system.
- * Author: Hetaf — simplified student version
- */
-
-/**
- * Car model (Phase 1)
+ *
+ * @author hetaf
  */
 public class Car {
 

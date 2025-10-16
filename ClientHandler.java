@@ -12,9 +12,8 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * ClientHandler (student-simple)
- * - No Server reference
- * - Reads commands and operates on Server.cars / Server.occupancyByDate
+ *
+ * @author hetaf
  */
 public class ClientHandler implements Runnable {
 
@@ -22,7 +21,7 @@ public class ClientHandler implements Runnable {
     private final BufferedReader in;
     private final PrintWriter out;
     private final ArrayList<ClientHandler> clients;
-    private String username = null; // harmless, kept for compatibility with GUI flow
+    private String username = null; // kept for compatibility with GUI flow
 
     public ClientHandler(Socket c, ArrayList<ClientHandler> clients) throws IOException {
         this.client = c;
@@ -53,8 +52,8 @@ public class ClientHandler implements Runnable {
             // REGISTER (always OK except empty)
             if (cmd.startsWith("REGISTER ")) {
                 String[] p = cmd.substring(9).split(" ");
-                if (p.length != 2) return "Please enter both email and password.";
-                if (p[0].isBlank() || p[1].isBlank()) return "Please enter both email and password.";
+                if (p.length != 2) return "Please enter both username and password.";
+                if (p[0].isBlank() || p[1].isBlank()) return "Please enter both username and password.";
                 username = p[0];
                 System.out.println("[Server] Registered: " + username);
                 return "Registration successful! You can now book cars.";

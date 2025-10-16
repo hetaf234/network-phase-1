@@ -12,22 +12,20 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * SERVER (super simple, student style)
- * - No Server object
- * - All shared state is static
- * - Inventory seeded inline in main
+ *
+ * @author hetaf
  */
 public class Server {
 
     // ===== shared state (static) =====
-    public static final Map<String, Car> cars = new ConcurrentHashMap<>();                 // carId -> Car
-    public static final Map<LocalDate, Set<String>> occupancyByDate = new ConcurrentHashMap<>(); // date -> set(carIds)
+    public static final Map<String, Car> cars = new ConcurrentHashMap<>(); // carId - Car
+    public static final Map<LocalDate, Set<String>> occupancyByDate = new ConcurrentHashMap<>(); // date - set(carIds)
 
     private static final ArrayList<ClientHandler> clients = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
-        // ---- seed inventory inline (20 cars) ----
-        // AUTO
+        // ---- Add 20 cars ----
+      
         cars.put("A01", new Car("A01","AUTO",2));
         cars.put("A02", new Car("A02","AUTO",2));
         cars.put("A03", new Car("A03","AUTO",2));
@@ -38,7 +36,7 @@ public class Server {
         cars.put("A08", new Car("A08","AUTO",8));
         cars.put("A09", new Car("A09","AUTO",8));
         cars.put("A10", new Car("A10","AUTO",8));
-        // MANUAL
+        
         cars.put("M01", new Car("M01","MANUAL",2));
         cars.put("M02", new Car("M02","MANUAL",2));
         cars.put("M03", new Car("M03","MANUAL",2));
@@ -53,14 +51,14 @@ public class Server {
 
         // ---- listen/accept ----
         try (ServerSocket serverSocket = new ServerSocket(9090)) {
-            System.out.println("[Server] Listening on 9090...");
+            System.out.println("[Server] Waiting for client to connect");
             while (true) {
                 Socket client = serverSocket.accept();
                 System.out.println("[Server] Client connected");
-                ClientHandler ch = new ClientHandler(client, clients); // CHANGED: no Server param
+                ClientHandler ch = new ClientHandler(client, clients); 
                 clients.add(ch);
                 new Thread(ch).start();
-            }
-        }
-    }
-}
+            }//end of while 
+        }//end of try 
+    }//main 
+}// end of class 
